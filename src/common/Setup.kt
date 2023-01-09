@@ -2,12 +2,19 @@ package common
 
 import java.io.File
 
-abstract class Day(val day: Int, val file: String) {
+abstract class Day(val exampleFile: String, val inputFile: String) {
 
-    var lines = mutableListOf<String>()
+    protected var linesInput = mutableListOf<String>()
 
-    protected fun readInput(fileName: String) {
-        File(fileName).forEachLine { lines.add(it) }
+    protected var linesExample = mutableListOf<String>()
+
+
+    protected fun readInput() {
+        File(inputFile).forEachLine { linesInput.add(it) }
+    }
+
+    protected fun readExample() {
+        File(exampleFile).forEachLine { linesExample.add(it) }
     }
 
     protected abstract fun part1()
